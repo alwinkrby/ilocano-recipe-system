@@ -41,6 +41,8 @@ app.use(cors({
     credentials: true                // Allows cookies/sessions to be sent
 }));
 
+
+app.use(express.static(__dirname));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -61,13 +63,14 @@ app.use(session({
 
 
 // This defines "db" so the rest of your code knows where to send the data
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',      // Default XAMPP username
-    password: '',      // Default XAMPP password is empty
-    database: 'ilocano_recipes' // Ensure this matches the DB name in phpMyAdmin
-});
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',      // Default XAMPP username
+//     password: '',      // Default XAMPP password is empty
+//     database: 'ilocano_recipes' // Ensure this matches the DB name in phpMyAdmin
+// });
 
+const db = require('./db'); // This imports your connection from db.js
 // Connect to the database
 db.connect((err) => {
     if (err) {
@@ -535,4 +538,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
+// app.listen(3000, () => {
+//     console.log("🚀 Server running on http://localhost:3000");
+// });
 
