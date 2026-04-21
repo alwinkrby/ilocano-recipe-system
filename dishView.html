@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <section class="section1">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+  <div class="container">
+    <a class="navbar-brand birthstone-regular brown" href="index.html">Kusina Ilocano</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alldishes.html">Browse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#category">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="saved.html">Saved</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="grocerylist.html">Grocery List</a>
+        </li>
+      </ul>
+
+      
+      <form class="d-flex nav-search" role="search" action="search.html" method="GET">
+        <input class="form-control me-2 searchbarpad" type="text" name="q" placeholder="Search for dishes..." aria-label="Search"/>
+
+        <div style="position: relative; display: inline-block;">
+          <button id="navAuthBtn" class="btn text-white searchbarpad buttonOrange" type="button">Login</button>
+
+          <!-- Desktop dropdown -->
+          <div id="accountMenu">
+            <a href="profile.html" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Profile Settings</a>
+            <a href="addDish.html" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Add Dish</a>
+            <a href="#" id="logoutBtn" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Log Out</a>
+          </div>  
+        </div>
+
+        <!-- Mobile modal -->
+        <div id="accountModal">
+          <div style="
+              background: white; padding: 20px; border-radius: 10px;
+              width: 80%; max-width: 300px;
+            ">
+            <h3>Account</h3>
+            <a href="profile.html" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Profile Settings</a>
+            <a href="addDish.html" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Add Dish</a>
+            <a href="#" id="modalLogout" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Log Out</a>
+            <button type="button" onclick="closeModal()" style="margin-top:15px;" class="btn brownbg text-white">Close</button>
+          </div>
+        </div>
+
+      
+
+      </form>
+    </div>
+  </div>
+        </nav>
+        <div class="p-4 bg-white">
+            <div class="container">
+                <a href="alldishes.html" class="text-decoration-none text-dark"> <i class="fa-solid fa-arrow-left"></i>&nbsp;Back To Browse</a>
+            </div>
+            
+        </div>
+        <div class="container mt-5" data-id="pinakbet-1">
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <img src="" alt="" id="dishIMG" class="w-100 rounded-4">
+                </div>
+                <div class="col-sm-12 col-lg-6 pt-3">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-volume" style="color: rgb(0, 0, 0);"></i>
+                        <h1 id="DishName" class="mb-0"></h1>
+                        <p id="DishPhonetic" class="mb-0 ms-1"></p>
+                        <button id="DishAudio" class="btn border p-2 ms-auto" type="button" onclick="playAudio()"><i class="fa-solid fa-volume-high fa-xl" style="color: rgb(255, 212, 59);"></i></button>
+                        <button id="bookmarkBtn" class="btn border p-2 ms-2 save-btn" type="button"><i id="bookmarkIcon" class="fa-regular fa-bookmark fa-xl" style="color: rgb(255, 212, 59);"></i></button>
+                        <button class="btn border p-2 ms-2 save-btn" id="openReportModal"><i class="fa-solid fa-flag fa-xl" style="color: rgb(251, 0, 0);"></i></i></button>
+                    </div>
+                    
+
+                    <audio id="myAudio">
+                      <source src="" type="audio/mpeg">
+                    </audio>
+
+                    <script>
+                      function playAudio() {
+                      var x = document.getElementById("myAudio");
+                      x.play();
+                      }
+                    </script>
+
+
+                    <!-- Modal -->
+                    <div id="reportModal" class="modal">
+                      <div class="modal-content">
+
+                        <div class="mb-4">
+                            <h2>Report Dish</h2>
+                        </div>
+
+                        <div class="alert alert-warning d-flex align-items-center mb-4" role="alert">
+                          <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                          <div>
+                            <strong>Help us maintain quality</strong><br>
+                            <span class="small">When a dish receives 5 reports, it will be automatically removed. Please only report genuine issues.</span>
+                          </div>
+                        </div>
+
+                        <form id="reportForm" class="report-form">
+                          <p><strong>Select a reason for reporting:</strong></p>
+
+                          <input type="radio" name="reason" value="fake" id="reasonFake">
+                          <label class="report-option-label" for="reasonFake">
+                              <div class="report-icon">🚫</div> <span>Fake or fabricated dish</span>
+                          </label>
+
+                          <input type="radio" name="reason" value="spam" id="reasonSpam">
+                          <label class="report-option-label" for="reasonSpam">
+                              <div class="report-icon">⚠️</div>
+                              <span>Spam or low quality</span>
+                          </label>
+
+                          <input type="radio" name="reason" value="not_ilocano" id="reasonNotIlocano">
+                          <label class="report-option-label" for="reasonNotIlocano">
+                              <div class="report-icon">🌍</div>
+                              <span>Not an Ilocano dish</span>
+                          </label>
+
+                          <input type="radio" name="reason" value="inappropriate" id="reasonInappropriate">
+                          <label class="report-option-label" for="reasonInappropriate">
+                              <div class="report-icon">❌</div>
+                              <span>Inappropriate content</span>
+                          </label>
+
+                          <input type="radio" name="reason" value="duplicate" id="reasonDuplicate">
+                          <label class="report-option-label" for="reasonDuplicate">
+                              <div class="report-icon">📋</div>
+                              <span>Duplicate entry</span>
+                          </label>
+
+                          <input type="radio" name="reason" value="incorrect" id="reasonIncorrect">
+                          <label class="report-option-label" for="reasonIncorrect">
+                              <div class="report-icon">📝</div>
+                              <span>Incorrect information</span>
+                          </label>
+
+                          <input type="radio" name="reason" value="other" id="reasonOther">
+                          <label class="report-option-label" for="reasonOther">
+                              <div class="report-icon">💬</div>
+                              <span>Other reason</span>
+                          </label>
+
+                          <div id="otherReasonContainer" style="display: none;" class="mt-3">
+                              <p class="small mb-1"><strong>Please provide more details:</strong></p>
+                              <textarea 
+                                  id="otherReasonDetails" 
+                                  name="other_details" 
+                                  class="form-control" 
+                                  rows="3" 
+                                  placeholder="Describe the issue..."
+                                  style="border-radius: 8px; border: 1px solid #fce4e4;"></textarea>
+                          </div>
+
+                          <input type="text" id="otherReasonInput" class="form-control mt-2 d-none" placeholder="Type here...">
+
+                          <br><br>
+
+                          <div class="modal-buttons d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-light border" id="cancelBtn">Cancel</button>
+                            <button type="submit" class="btn buttonOrange" id="submitReportBtn">Submit Report</button>
+                          </div>
+                        </form>
+
+                      </div>
+                    </div>
+
+
+                    <br>
+                    <p id="DishDescription"></p>
+                    <div class="d-flex align-items-center">
+                      <i class="fa-solid fa-star fa-2xl" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-solid fa-star fa-2xl" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-solid fa-star fa-2xl" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-solid fa-star fa-2xl" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-regular fa-star fa-2xl" style="color: rgb(255, 212, 59);"></i>
+                      <h3 class="px-2 mb-0">4.8</h3>
+                      <p class="mb-0">(127 reviews)</p>
+                    </div>
+                    <hr class="brown">
+                    <div class="row text-center g-3 mb-3">
+  
+                    <div class="col-4">
+                      <div class="p-3 rounded-4 bg-white h-100">
+                        <i class="fa-regular fa-clock fa-xl brown mb-4"></i><br>
+                        <h5 id="PrepTime"></h5>
+                        <p>Prep Time</p>
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class="p-3 rounded-4 bg-white h-100">
+                        <i class="fa-solid fa-fire-burner fa-xl brown mb-4"></i><br>
+                        <h5 id="CookTime"></h5>
+                        <p>Cook Time</p>
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class="p-3 rounded-4 bg-white h-100">
+                        <i class="fa-solid fa-user-group fa-xl mb-4 brown"></i><br>
+                        <h5 id="Servings"></h5>
+                        <p>Servings</p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <p id="UserFullName"> <span class="brown">Shared by:</span></b></p> 
+                    
+                    
+                </div>
+
+
+                <div class="mt-5 rounded-4 bg-white p-5 shadow-sm">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fa-solid fa-clock-rotate-left fa-xl brown me-2"></i>
+                    <h3>History & Cultural Significance</h3>
+                  </div>
+                  <p id="DishHistory"></p>
+                  
+                </div>
+
+                <div class="mt-5 rounded-4 bg-white p-5 shadow-sm">
+                  <div class="d-flex align-items-center mb-3">
+                    <h3 class="me-3">Ingredients</h3>
+                     <button type="button" id="addGroceryBtn" class="btn btn-sm text-white fs-6 py-2 rounded-3 mb-2 buttonOrange ms-auto">
+                        <b>Add to Grocery List</b>
+                    </button>
+                  </div>
+
+                  <div class="row fs-5" id="ingredientsRow">
+
+
+                    <div class="col-md-6">
+                      <ul id="DishIngredients1">
+                        
+                      </ul>
+                    </div>
+
+                    <div class="col-md-6">
+                      <ul id="DishIngredients2">
+                        
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="container">
+                <div class="row g-4 mt-5">
+                  <div class="col-sm-12 col-lg-6">
+                    <div class="rounded-4 bg-white p-5 shadow-sm h-100">
+                      <div class="d-flex align-items-center mb-2">
+                        <h3>Cooking Methods</h3>
+                      </div>
+
+                      <div id="cookingMethodsContainer"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-lg-6">
+                    <div class="rounded-4 bg-white p-5 shadow-sm h-100">
+                      <div class="d-flex align-items-center mb-2">
+                        <h3>Preparation Methods</h3>  
+                      </div>
+                      <div id="prepMethodsContainer"></div>
+                      
+                    </div>
+                  </div>
+
+                </div>
+                </div>
+
+                <div class="mt-5 rounded-4 bg-white p-5 shadow-sm">
+  
+                  <div class="d-flex align-items-center mb-4">
+                    <h3>Step-by-Step Instructions</h3>
+                  </div>
+
+                  <!-- <div class="d-flex gap-3">
+
+                    
+                    <div class="step-circle buttonOrange text-white">
+                      <h5 class="mb-0">1</h5>
+                    </div>
+
+                    
+                    <div>
+                      <h6 id="StepTitle"></h6>
+                      <p id="StepDescription">
+                        
+                      </p>
+                    </div>
+
+                  </div> -->
+                  <div id="stepsContainer">
+
+                    </div>
+
+
+                </div>
+
+                <div class="mt-5 rounded-4 bg-white p-5 shadow-sm">
+                  <div class="d-flex align-items-center mb-2">
+                    <h3>Reviews & Comments (3)</h3>
+                  </div>
+                  <div class="lightbrownBG rounded-4 p-4 rounded-4">
+                    <h5>Leave a Review</h5>
+                    <div id="loginAlert" class="lightyellowBG d-flex align-items-center p-3 rounded-3 border border-warning my-3">
+                      <p class="mb-0 brown">Please <span><a href="" class="brown">log in</a></span> to leave a comment.</p>
+                    </div>
+                    <h6>Rating</h6>
+                    <div class="starRatingInput" class="fs-4 mb-3">
+                      <i class="fa-star fa-regular clickable-star" data-value="1" style="color: rgb(255, 212, 59); cursor: pointer;"></i>
+                      <i class="fa-star fa-regular clickable-star" data-value="2" style="color: rgb(255, 212, 59); cursor: pointer;"></i>
+                      <i class="fa-star fa-regular clickable-star" data-value="3" style="color: rgb(255, 212, 59); cursor: pointer;"></i>
+                      <i class="fa-star fa-regular clickable-star" data-value="4" style="color: rgb(255, 212, 59); cursor: pointer;"></i>
+                      <i class="fa-star fa-regular clickable-star" data-value="5" style="color: rgb(255, 212, 59); cursor: pointer;"></i>
+                    </div>
+                  <br>
+                  <h6>Your Review</h6>
+                  <textarea class="form-control" id="reviewText" rows="3" placeholder="Share your experience with this recipe..."></textarea>
+                  <button id="submitReviewBtn" class="btn btn-sm text-white fs-6 py-2 rounded-3 my-2 buttonOrange ms-auto">
+                    <b>Submit Review</b>
+                  </button>
+                  </div>
+                  <div id="reviewsContainer" >
+
+                  </div>
+                  <!-- <div class="border mt-5 rounded-4 p-4">
+                    <div class="d-flex align-items-center">
+                      <h5 id="commentName">Maria Santos</h6>
+                      <i class="fa-solid fa-star ms-auto" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i>
+                      <i class="fa-solid fa-star me-3" style="color: rgb(255, 212, 59);"></i>
+                      <button id="removeComment" class="btn p-0 border-0 bg-transparent icon-btn icon-btn"><i class="fa-regular fa-circle-xmark text-danger" style="font-size: 1.5rem;"></i></button>
+                      
+                    </div>
+                    <p id="commentDate" class="fs-6">2026-02-15</p>
+                    <p id="comment">This is exactly how my grandmother makes it! The recipe is authentic and delicious. The key is really not stirring the vegetables too much.</p>
+
+                  </div> -->
+                  
+                </div>
+                
+                
+                
+                
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <footer class="brownbg footer">
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="w-100 text-white m-3 row">
+
+          <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center">
+            <h5>Follow us:&nbsp;&nbsp;</h5> 
+            <a href="https://www.facebook.com/" class="text-decoration-none text-white" target="_blank"> <i class="fa-brands fa-facebook fa-xl pb-3"></i></a>
+            <a href="https://www.instagram.com/?hl=en" class="text-decoration-none text-white" target="_blank"><i class="fa-brands fa-instagram fa-xl pb-3 ps-2"></i></a>
+          </div>
+          <div class="col-12 col-lg-4 text-center">
+            <h1 class="birthstone-regular">Via ilocos</h1>
+            <p class="tenfont">© 2026 Ilocano Cuisine Platform. All rights reserved.</p>
+          </div>
+          <div class="col-12 col-lg-4">
+            
+          </div>
+
+
+        </div>
+
+      </div>
+        
+    </footer>
+
+
+    <script src="assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/script.js"></script>
+    <script src="assets/details.js"></script>
+</body>
+</html>

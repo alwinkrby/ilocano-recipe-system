@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <section class="section1" style="min-height: 100vh;">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+  <div class="container">
+    <a class="navbar-brand birthstone-regular brown" href="index.html">Kusina Ilocano</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alldishes.html">Browse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#category">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="saved.html">Saved</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="grocerylist.html">Grocery List</a>
+        </li>
+      </ul>
+
+      
+      <form class="d-flex nav-search" role="search" action="search.html" method="GET">
+        <input class="form-control me-2 searchbarpad" type="text" name="q" placeholder="Search for dishes..." aria-label="Search"/>
+
+        <div style="position: relative; display: inline-block;">
+          <button id="navAuthBtn" class="btn text-white searchbarpad buttonOrange" type="button">Login</button>
+
+          <!-- Desktop dropdown -->
+          <div id="accountMenu">
+            <a href="profile.html" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Profile Settings</a>
+            <a href="addDish.html" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Add Dish</a>
+            <a href="#" id="logoutBtn" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Log Out</a>
+          </div>  
+        </div>
+
+        <!-- Mobile modal -->
+        <div id="accountModal">
+          <div style="
+              background: white; padding: 20px; border-radius: 10px;
+              width: 80%; max-width: 300px;
+            ">
+            <h3>Account</h3>
+            <a href="profile.html" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Profile Settings</a>
+            <a href="addDish.html" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Add Dish</a>
+            <a href="#" id="modalLogout" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Log Out</a>
+            <button type="button" onclick="closeModal()" style="margin-top:15px;" class="btn brownbg text-white">Close</button>
+          </div>
+        </div>
+
+      
+
+      </form>
+    </div>
+  </div>
+        </nav>
+        <div class="p-2 bg-white">
+            <div class="container">
+                <a href="alldishes.html" class="text-decoration-none text-dark pt-2"> <i class="fa-solid fa-arrow-left"></i>&nbsp;Back To Browse</a><br>
+                <div class="d-flex align-items-center mt-3">
+                    <div class="p-3 d-inline-block m-1 rounded-4 lightbrownBG">
+                    <i class="fa-regular fa-bookmark fa-2xl brown"></i> 
+                    </div>
+                    <h2>Saved Dishes</h2><br>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="container pt-5">
+            <div class="row" id="favoritesContainer">
+                 <div class="col-sm-12 col-lg-4 mb-3">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card rounded-4 border-0 shadow img-wrapper">
+                            <div class="position-relative">
+                                <img src="DishFiles/img/pinakbet.jpg" class="card-img-top rounded-top-4" alt="">
+                                <div class="position-absolute top-0 end-0 m-2 d-flex gap-2">
+                                <div class="bg-white px-2 rounded-4 shadow-sm d-flex align-items-center">
+                                    <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i> 4.8
+                                </div>
+                                <button class="btn border border-0 btn-dark rounded-circle shadow-sm brownbg">
+                                    <i class="fa-solid fa-bookmark text-white"></i>
+                                </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Pinakbet</h5>
+                                <p class="card-text gray clamp-2">
+                                A traditional Ilocano vegetable stew made with mixed vegetables and bagoong (fermented fish paste).
+                                </p>
+                                <hr>
+                                <div class="d-flex">
+                                <i class="fa-regular fa-clock gray pt-1"></i>
+                                <p class="gray me-3">&nbsp;35 Minutes</p>
+                                <i class="fa-solid fa-user-group gray pt-1"></i>
+                                <p class="gray">&nbsp;4 Servings</p>
+                                </div>
+                            </div>
+                            </div>
+                        </a>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-4 mb-3">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card rounded-4 border-0 shadow img-wrapper">
+                            <div class="position-relative">
+                                <img src="DishFiles/img/pinakbet.jpg" class="card-img-top rounded-top-4" alt="">
+                                <div class="position-absolute top-0 end-0 m-2 d-flex gap-2">
+                                <div class="bg-white px-2 rounded-4 shadow-sm d-flex align-items-center">
+                                    <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i> 4.8
+                                </div>
+                                <button class="btn border border-0 btn-dark rounded-circle shadow-sm brownbg">
+                                    <i class="fa-solid fa-bookmark text-white"></i>
+                                </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Pinakbet</h5>
+                                <p class="card-text gray clamp-2">
+                                A traditional Ilocano vegetable stew made with mixed vegetables and bagoong (fermented fish paste).
+                                </p>
+                                <hr>
+                                <div class="d-flex">
+                                <i class="fa-regular fa-clock gray pt-1"></i>
+                                <p class="gray me-3">&nbsp;35 Minutes</p>
+                                <i class="fa-solid fa-user-group gray pt-1"></i>
+                                <p class="gray">&nbsp;4 Servings</p>
+                                </div>
+                            </div>
+                            </div>
+                        </a>
+                        </div>
+                        
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <footer class="brownbg footer">
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="w-100 text-white m-3 row">
+
+          <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center">
+            <h5>Follow us:&nbsp;&nbsp;</h5> 
+            <a href="https://www.facebook.com/" class="text-decoration-none text-white" target="_blank"> <i class="fa-brands fa-facebook fa-xl pb-3"></i></a>
+            <a href="https://www.instagram.com/?hl=en" class="text-decoration-none text-white" target="_blank"><i class="fa-brands fa-instagram fa-xl pb-3 ps-2"></i></a>
+          </div>
+          <div class="col-12 col-lg-4 text-center">
+            <h1 class="birthstone-regular">Via ilocos</h1>
+            <p class="tenfont">© 2026 Ilocano Cuisine Platform. All rights reserved.</p>
+          </div>
+          <div class="col-12 col-lg-4">
+            
+          </div>
+
+
+        </div>
+
+      </div>
+        
+    </footer>
+
+
+    <script src="assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/script.js"></script>
+    <script src="assets/favorite.js"></script>
+</body>
+</html>

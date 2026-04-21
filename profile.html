@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <section class="section1">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+  <div class="container">
+    <a class="navbar-brand birthstone-regular brown" href="index.html">Kusina Ilocano</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alldishes.html">Browse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#category">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="saved.html">Saved</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="grocerylist.html">Grocery List</a>
+        </li>
+      </ul>
+
+      
+      <form class="d-flex nav-search" role="search" action="search.html" method="GET">
+        <input class="form-control me-2 searchbarpad" type="text" name="q" placeholder="Search for dishes..." aria-label="Search"/>
+
+        <div style="position: relative; display: inline-block;">
+          <button id="navAuthBtn" class="btn text-white searchbarpad buttonOrange" type="button">Login</button>
+
+          <!-- Desktop dropdown -->
+          <div id="accountMenu">
+            <a href="profile.html" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Profile Settings</a>
+            <a href="addDish.html" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Add Dish</a>
+            <a href="#" id="logoutBtn" class="menuItem text-decoration-none text-dark" style="display:block; padding:8px;">Log Out</a>
+          </div>  
+        </div>
+
+        <!-- Mobile modal -->
+        <div id="accountModal">
+          <div style="
+              background: white; padding: 20px; border-radius: 10px;
+              width: 80%; max-width: 300px;
+            ">
+            <h3>Account</h3>
+            <a href="profile.html" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Profile Settings</a>
+            <a href="addDish.html" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Add Dish</a>
+            <a href="#" id="modalLogout" class="menuItem text-decoration-none text-dark" style="display:block; margin:10px 0;">Log Out</a>
+            <button type="button" onclick="closeModal()" style="margin-top:15px;" class="btn brownbg text-white">Close</button>
+          </div>
+        </div>
+
+      
+
+      </form>
+    </div>
+  </div>
+        </nav>
+
+        <div class="container pt-5 small-container">
+            <a href="index.html" class="text-decoration-none text-dark ps-2"> <i class="fa-solid fa-arrow-left"></i>&nbsp;Back To Home</a><br>
+                <div class="align-items-center mt-2 mb-4">
+                    <h2 class="mb-0">Profile Settings</h2>
+                    <p>Manage your account information and settings</p>
+                </div>
+            <div class="row">
+                <div class="p-4 rounded-4 bg-white shadow-sm">
+                    <div><h5>Profile Picture</h5></div>
+                    <div class="d-flex">
+                        <div class="d-inline-block p-5 rounded-circle brownbg">
+                        <i class="fa-regular fa-user fa-2xl text-white"></i>
+                        </div>
+
+                        <div class="w-100 p-3">
+                        <p class="fs-5 fw-bold mb-0">Name</p>
+                        <p class="mb-1">@username</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-4 bg-white mt-3 shadow-sm">
+                    <div><h5>Personal Information</h5></div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label mt-2">Full Name</label>
+                            <input type="text" class="form-control mb-3" id="profileFullName" required> 
+                        </div>
+                        <div class="col-6">
+                            <label for="exampleFormControlInput1" class="form-label mt-2">Username</label>
+                            <input type="text" class="form-control mb-3" id="profileUsername" required> 
+                        </div>
+                        <div class="col-12">
+                            <label for="exampleFormControlInput1" class="form-label mt-2">Email Address</label>
+                            <input type="email" name="email" class="form-control mb-3" id="profileEmail" required>  
+                        </div>
+                        <div class="col-12">
+                            <label for="exampleFormControlInput1" class="form-label mt-2">Phone Number</label>
+                            <input type="tel" class="form-control mb-3" id="profilePhone" placeholder="+63 XXX XXX XXXX" pattern="^(\+63|09)\d{9}$">
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa-regular fa-calendar" style="color: rgb(0, 0, 0);"></i>
+                            <p class="mb-0 ps-2">Joined March 14, 2026</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-4 bg-white mt-3 shadow-sm">
+                    <div><h5>Account Verification</h5></div>
+                    <div class="border p-3 rounded-3 w-100 d-flex justify-content-between align-items-center">
+    
+                        <div>
+                            <h6 class="mb-0">Email Verification</h6>
+                            <p class="tentwelve mb-0">name@email</p> <!--the user email will be displayed here-->
+                        </div>
+
+                        <button type="button" class="btn btn-sm text-white fs-6 py-2 rounded-3 buttonOrange">
+                            <b>Verify Email</b>
+                        </button>
+
+                    </div>
+
+                    <div class="border p-3 rounded-3 w-100 d-flex justify-content-between align-items-center mt-3">
+    
+                        <div>
+                            <h6 class="mb-0">Phone Verification</h6>
+                            <p class="tentwelve mb-0">No phone number added</p> <!-- if no phone number it will appear no phone number added but if user updated the phone it will be displayed here -->
+                        </div>
+
+                        <button type="button" class="btn btn-sm text-white fs-6 py-2 rounded-3 buttonOrange">
+                            <b>Verify Phone</b>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-4 bg-white mt-3 shadow-sm">
+                    <div><h5>Security</h5></div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="inputPassword5" class="form-label"><b>New Password</b></label>
+                            <input type="password" name="password" id="newPassword" class="form-control" placeholder="Enter a new password (Optional)"> <!-- this will update the password, but if nothing is typed, dont change it-->
+                            <p class="twelvefont mt-1">Leave blank to keep current password</p>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputPassword5" class="form-label"><b>Confirm New Password</b></label>
+                            <input type="password" id="confirmNewPassword" class="form-control mb-3" aria-describedby="passwordHelpBlock" placeholder="Confirm your password"> <!-- this should match the update password above-->
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="col-8">
+                    <button type="button" id="saveProfileBtn" class="btn btn-lg me-1 text-white fs-6 py-3 px-4 mt-3 buttonOrange w-100" >Save Changes</button>
+                </div>
+                <div class="col-4">
+                    <button type="button" id="logoutMainBtn" class="btn btn-lg me-3 text-danger fs-6 py-3 px-4 mt-3 w-100 border border-danger">Log out</button> <!-- this will log out the account-->
+                </div>
+             
+                
+
+                
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <footer class="brownbg footer">
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="w-100 text-white m-3 row">
+
+          <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center">
+            <h5>Follow us:&nbsp;&nbsp;</h5> 
+            <a href="https://www.facebook.com/" class="text-decoration-none text-white" target="_blank"> <i class="fa-brands fa-facebook fa-xl pb-3"></i></a>
+            <a href="https://www.instagram.com/?hl=en" class="text-decoration-none text-white" target="_blank"><i class="fa-brands fa-instagram fa-xl pb-3 ps-2"></i></a>
+          </div>
+          <div class="col-12 col-lg-4 text-center">
+            <h1 class="birthstone-regular">Via ilocos</h1>
+            <p class="tenfont">© 2026 Ilocano Cuisine Platform. All rights reserved.</p>
+          </div>
+          <div class="col-12 col-lg-4">
+            
+          </div>
+
+
+        </div>
+
+      </div>
+        
+    </footer>
+
+
+    <script src="assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/script.js"></script>
+</body>
+</html>

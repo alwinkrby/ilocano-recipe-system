@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Dish - Kusina Ilocano</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="section1">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+            <div class="container">
+                <a class="navbar-brand birthstone-regular brown" href="index.html">Kusina Ilocano</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="alldishes.html">Browse</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#category">Categories</a></li>
+                        <li class="nav-item"><a class="nav-link" href="saved.html">Saved</a></li>
+                        <li class="nav-item"><a class="nav-link" href="grocerylist.html">Grocery List</a></li>
+                    </ul>
+                    <form class="d-flex nav-search" role="search" action="search.html" method="GET">
+                        <input class="form-control me-2 searchbarpad" type="text" name="q" placeholder="Search for dishes..."/>
+                        <div style="position: relative; display: inline-block;">
+                            <button id="navAuthBtn" class="btn text-white searchbarpad buttonOrange" type="button">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container pt-5 small-container">
+            <a href="index.html" class="text-decoration-none text-dark ps-2"> <i class="fa-solid fa-arrow-left"></i>&nbsp;Back To Home</a><br>
+            <div class="align-items-center mt-2 mb-4">
+                <h2 class="mb-0">Add New Dish</h2>
+                <p>Share a traditional Ilocano recipe with the community</p>
+            </div>
+
+            <form id="addDishForm" novalidate>
+                <div class="row">
+                    <div class="bg-white rounded-4 shadow-sm p-4">
+                        <h5>Basic Information</h5>
+                        
+                        <label for="dishName" class="form-label mt-2"><b>Dish Name</b> <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control mb-2" id="dishName" name="dishName" placeholder="e.g., Pinakbet" required> 
+
+                        <label for="phonetic" class="form-label mt-2"><b>Pronunciation Guide</b></label>
+                        <input type="text" class="form-control mb-2" id="phonetic" name="phonetic" placeholder="e.g., pee-nhak-bet">   
+
+                        <label for="audioUpload" class="form-label mt-2"><b>Pronunciation Audio</b></label> 
+                        <div class="upload-container mb-2">
+                            <input type="file" id="audioFile" name="audioFile" accept=".mp3,.wav,.m4a" hidden>
+                            <label for="audioFile" class="upload-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fa-solid fa-upload fa-2xl mb-4" style="color: rgb(137, 137, 137);"></i>
+                                <p class="mb-1 text-secondary">Click to upload audio file</p>
+                            </label>
+                        </div>
+
+                        <label class="form-label mt-2"><b>Dish Image</b> <span class="text-danger">*</span></label> 
+
+                        <div class="upload-container mb-2">
+                            <input type="file" id="dishImage" name="dishImage" accept=".png,.jpg,.jpeg" hidden required>
+                            
+                            <label for="dishImage" class="upload-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fa-solid fa-upload fa-2xl mb-4" style="color: rgb(137, 137, 137);"></i>
+                                <p class="mb-1 text-secondary">Click to upload dish image</p>
+                            </label>
+                        </div>
+                        
+                        <label for="category" class="form-label mt-2"><b>Category <span class="text-danger">*</span> </b></label>
+                        <select class="form-select custom-select" id="category" name="category" required>
+                            <option value="" selected disabled>Select a category</option>
+                            <option value="Main Dishes">Main Dishes</option>
+                            <option value="Soups & Stews">Soups & Stews</option>
+                            <option value="Appetizers">Appetizers</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Snacks">Snacks</option>
+                            <option value="Desserts">Desserts</option>
+                        </select>
+
+                        <label for="description" class="form-label mt-2"><b>Description <span class="text-danger">*</span> </b></label>
+                        <textarea class="form-control" id="description" name="description" rows="5" placeholder="Brief description..." required></textarea>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-4">
+                                <label for="prep_time" class="form-label mt-2"><b>Preparation Time</b> <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" id="prep_time" name="prep_time" placeholder="e.g., 20 minutes" required> 
+                            </div>
+                            <div class="col-sm-12 col-lg-4">
+                                <label for="cooking_time" class="form-label mt-2"><b>Cooking Time</b> <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" id="cooking_time" name="cooking_time" placeholder="e.g., 35 minutes" required> 
+                            </div>
+                            <div class="col-sm-12 col-lg-4">
+                                <label for="servings" class="form-label mt-2"><b>Servings</b> <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" id="servings" name="servings" placeholder="e.g., 4" required> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-4 shadow-sm p-4 mt-4">
+                        <label for="history"><h5>History & Cultural Significance <span class="text-danger">*</span></h5></label>
+                        <textarea class="form-control" id="dishHistory" name="dishHistory" rows="6" placeholder="Share the background..." required></textarea>
+                    </div>
+
+                    <div class="bg-white rounded-4 shadow-sm p-4 mt-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5>Recipe Details</h5>
+                            <button type="button" class="border-0 bg-white brown" id="addIngredientBtn">+ Add</button>
+                        </div>
+                        
+                        <label class="form-label"><b>Ingredients</b> <span class="text-danger">*</span></label>
+                        <div id="ingredientsContainer">
+                            <div class="d-flex ingredient-row">
+                                <input type="text" class="form-control mb-2" name="ingredients[]" placeholder="ingredient 1" required>
+                                <button type="button" class="border border-0 mb-2 p-2 bg-white remove-btn"><i class="fa-regular fa-trash-can" style="color:red;"></i></button>
+                            </div>
+                        </div>
+
+                        <label for="cooking_methods" class="form-label mt-2"><b>Cooking Methods <span class="text-danger">*</span></b></label>
+                        <textarea class="form-control" id="cooking_methods" name="cooking_methods" rows="3" placeholder="eg., Sautéing, Simmering" required></textarea> 
+
+                        <label for="preparation_method" class="form-label mt-2"><b>Preparation Methods <span class="text-danger">*</span></b></label>
+                        <textarea class="form-control" id="preparation_method" name="preparation_method" rows="3" placeholder="eg., Washing, Slicing" required></textarea>
+                    </div>
+
+                    <div class="bg-white rounded-4 shadow-sm p-4 mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <h5 class="mb-0">Step-by-Step Instructions <span class="text-danger">*</span></h5>
+                            <button type="button" class="border-0 bg-white brown ms-auto" id="addStepBtn">+ Add Step</button>
+                        </div>
+                        <div id="stepsContainer">
+                            <div class="border rounded-3 mt-3 p-3 step-item">
+                                <div class="d-flex align-items-center p-2">
+                                    <h6 class="mb-0 brown">Step 1</h6>
+                                    <button type="button" class="border-0 bg-white ms-auto remove-btn"><i class="fa-regular fa-trash-can" style="color:red;"></i></button>
+                                </div>
+                                <input type="text" name="stepTitles[]" class="form-control mb-2" placeholder="Step title" required> 
+                                <textarea name="stepDescriptions[]" class="form-control" rows="3" placeholder="Description" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <button type="submit" id="saveDishBtn" class="btn btn-lg text-white py-3 mt-3 buttonOrange w-100">Save Dish</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="cancelBtn" class="btn btn-lg py-3 mt-3 w-100 border border-black">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="brownbg footer mt-5">
+      <div class="container text-center text-white py-4">
+            <h1 class="birthstone-regular">Via ilocos</h1>
+            <p>© 2026 Ilocano Cuisine Platform. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/script.js"></script>
+</body>
+</html>
